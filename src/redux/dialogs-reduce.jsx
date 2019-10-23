@@ -1,7 +1,7 @@
 const ADD_MESS="ADD-MESS";
 const UPDATE_NEW_MESS_TEXT="UPDATE-NEW-MESS-TEXT";
 
-let initialState={
+let initialState={ 
  
     messages: [
       { id: 1, message: 'Hello' },

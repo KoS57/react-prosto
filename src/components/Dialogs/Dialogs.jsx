@@ -2,18 +2,19 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from '././DialogsItem/DialogsItem'
 import Message from '././Message/Message'
-import {addMessActionCreator,updateNewMessTextActionCreator} from '../../redux/dialogs-reduce'
+import DialogsContainer from './DialogsContainer'
 
-const Dialogs = (props) => {
+
+const Dialogs = (props) => { 
     let messageElement = props.messageData.map(mess => <Message message={mess.message} id={mess.id} />);
     let dialogElement = props.dialogData.map(dialog => < DialogItem name={dialog.name} id={dialog.id} />);
     let newPostWord = React.createRef();
     let addMess = () => {
-       props.dispatch(addMessActionCreator()) 
+       props.addMess();
     }
 let onMessChange=()=>{
     let text=newPostWord.current.value;
-    props.dispatch (updateNewMessTextActionCreator(text));
+    props.onMessChange();
   }
 
     
