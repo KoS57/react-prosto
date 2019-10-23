@@ -10,6 +10,7 @@ import Music from './components/Music/Music'
 import Settings from './components/Settings/Settings'
 
 
+
 const App = (props) => {
 
   return (
@@ -24,12 +25,12 @@ const App = (props) => {
           dispatch={props.dispatch}
           dispatch={props.dispatch} />} />
 
-        <Route path='/profile' render={() => <Profile
+        <Route path='/profile' render={() => <Profile store={props.store} />} />
         
-          artData={props.state.arts.posts}
+          {/* artData={props.state.arts.posts}
           dispatch={props.dispatch}
           dispatch={props.dispatch}
-          newPostText={props.state.arts.newPostText} />} />
+          newPostText={props.state.arts.newPostText} */}
         <Route path='/news' component={News} />
         <Route path='/music' component={Music} />
         <Route path='/settings' component={Settings} />
