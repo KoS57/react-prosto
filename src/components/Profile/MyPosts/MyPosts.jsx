@@ -6,13 +6,14 @@ import Posts from './Posts/Posts';
 
 
 
-
 const MyPosts = (props) => {
-  let artElement = props.artData.map(a => <Posts art={a.art} likesCount={a.likesCount} id={a.id} />);
+let state=props.profilePage;
+
+  let artElement = state.posts.map(a => <Posts art={a.art} likesCount={a.likesCount} id={a.id} />);
   let newPostElement = React.createRef();
 
-  let onAddPost = () => {
-    props.addPost();
+  let AddPost = () => {
+    props.onAddPost();
 
   }
   let onPostChange = () => {
@@ -24,9 +25,9 @@ const MyPosts = (props) => {
     <h3> May post</h3>
     <div>
       <textarea ref={newPostElement} onChange={onPostChange}
-        value={props.newPostText}></textarea>
+        value={state.newPostText}></textarea>
       <div>
-        <button onClick={onAddPost}>Add post</button>
+        <button onClick={AddPost}>Add post</button>
       </div>
     </div>
     <div className={s.posts}>

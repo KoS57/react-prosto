@@ -4,9 +4,9 @@ import dialogsReducer from './dialogs-reduce'
 
 
 let reducer= combineReducers({
-    arts:profileReducer,
-     profilePage:dialogsReducer
+   profilePage: profileReducer,
+    dialogPage:dialogsReducer
 });
 let store= createStore(reducer);
 
-export default store;
+export default store; 
