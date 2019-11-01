@@ -8,11 +8,6 @@ const Profile = (props) => {
     <div>
       <ProfileInfo />
       <MyPostsContainer/>
-
-      {/* //  artData={props.artData} 
-      // dispatch={props.dispatch} 
-      // dispatch={props.dispatch}
-      // newPostText={props.newPostText}     */}
       </div>
   )
 }
