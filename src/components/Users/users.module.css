@@ -5,3 +5,6 @@
 .selectPage{
     font-weight: bold;
 }
+.page{
+    cursor:pointer;
+}

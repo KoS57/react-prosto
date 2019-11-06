@@ -5,11 +5,11 @@ const SET_CURRENT_PAGE='SET_CURRENT_PAGE';
 const SET_CURRENT_TOTAL_COUNT='SET_CURRENT_TOTAL_COUNT';
 
 
-let initialState={
+let initialState={ 
   
      users:[],
-     pageSize:25,
-     totalUserCount:20,
+     pageSize:10,
+     totalUserCount:0,
      currentPage:1
 
   }
