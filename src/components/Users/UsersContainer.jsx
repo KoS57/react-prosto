@@ -1,7 +1,7 @@
 import React from 'react'
 import Users from './Users'
 import {connect} from 'react-redux'
-import {followAC,unfollowAC,setUserAC, } from '../../redux/users-reduce'
+import {followAC,unfollowAC,setUserAC,setUserTotalCountAC } from '../../redux/users-reduce'
 
 
 let mapStateToProps = (state)=>{
@@ -20,6 +20,9 @@ let mapDispatchToProps= (dispatch)=>{
         },  
         setUsers:(users)=>{
             dispatch(setUserAC(users));
+        },
+        setUserTotalCount:(totalUserCount)=>{
+            dispatch(setUserTotalCountAC(totalUserCount))
         }
 
     }
