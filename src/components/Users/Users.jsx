@@ -2,33 +2,44 @@ import React from 'react'
 import styles from './users.module.css'
 import *as axios from 'axios'
 import userPhoto from '../../images/user.png'
+import load from '../../images/load.gif'
 
 class Users extends React.Component {
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+        .then(response => {
+            this.props.setUsers(response.data.items);
+            this.props.setUsersTotalCount(response.data.totalCount);
+
+    });
+    } 
+    onPageChange = (pageNumber)=> {
+        this.props.setCurrentPage(pageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+        .then(response => {
             this.props.setUsers(response.data.items)
     });
     } 
-        onPageChange=(pageNumber)=>{
-               this.props.setCurrentPage(pageNumber)
-                axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-                .then(response => {
-                    this.props.setUsers(response.data.items)});
-                    }   
-        render(){ 
-            let pageCount=Math.ceil(this.props.totalUserCopunt/this.props.pageSize);
-            let page=[];
-            for (let i=1; i<=pageCount;i++){
-                page.push(i)
-            }
 
+          
+        render()
+            {
+                let pageSize=Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+                let page=[];
+                for (let i=1; i<=pageSize;i++){
+                    page.push(i);
+                }
+            
     return <div>
-       <div>
-           {page.map(p=>{
-               return <span className={this.props.currentPage ===p && styles.selectedPAge}
-               onClick={()=>{this.onPageChange(p);}}>{p}</span>
-           })}
-       </div>
+        <div>
+           
+        </div>
+   <div>
+       {page.map(p=>{
+       return <span  className={this.props.currentPage === p && styles.selectedPage} 
+       onClick={()=>{this.onPageChange(p);}} >{p}</span> 
+       })}
+   </div>
             {
                 this.props.user.map(u => <div key={u.id}>
                     <span>
