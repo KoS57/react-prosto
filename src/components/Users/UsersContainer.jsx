@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {follow,unfollow,setUsers,setCurrentPage,setUsersTotalCount, toggleIsFetching} from '../../redux/users-reduce'
 import Users from './Users'
 import *as axios from 'axios'
-import indicator from '../../images/indicator.gif'
+import Preloader from '../Preloader/Preloader'
 
 
 class UsersContainer extends React.Component {
@@ -29,7 +29,7 @@ class UsersContainer extends React.Component {
 
     render() {
         return <>
-        {this.props.isFetching ? <img src={indicator}/>:null}
+        {this.props.isFetching ? <Preloader/>:null}
         <Users 
             
             totalUserCount={this.props.totalUserCount}

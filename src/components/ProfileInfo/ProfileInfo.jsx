@@ -1,11 +1,11 @@
 import React from 'react'
 import s from "./ProfileInfo.module.css"
-import{indicator} from '../../images/indicator.gif'
 import { link } from 'fs'
+import Preloader from '../Preloader/Preloader'
 
 const ProfileInfo = (props) => {
     if (!props.profile){
-        return <img src={indicator}/>
+        return <Preloader/>
     }
     
     return ( 
