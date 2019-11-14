@@ -2,7 +2,7 @@ import React from 'react';
 import{indicator} from '../../images/indicator.gif'
 
 let Preloader = (props) => {
-    return <div style={{backgroundColor: 'white'}}>
+    return <div >
         <img src={indicator} />
     </div>
 }
