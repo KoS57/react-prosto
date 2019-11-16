@@ -10,7 +10,7 @@ let Users = (props)=>{
                 for (let i=1; i<=pageSize;i++){
                     page.push(i);
                 }
-            
+            }
     return <div>
         <div>
            
@@ -48,6 +48,6 @@ let Users = (props)=>{
             }
         </div>
         }
-    }
+    
 
     export default Users;
