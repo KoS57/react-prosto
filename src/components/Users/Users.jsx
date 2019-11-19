@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './users.module.css'
 import userPhoto from '../../images/user.png'
 import { NavLink } from 'react-router-dom'
-import *as axios from 'axios'
 import { userApi } from '../API/api'
 
 const Users = (props) => {
@@ -29,19 +28,23 @@ const Users = (props) => {
                     </div>
                     <div>
                         {u.followed
-                            ? <button onClick={() => {
+                            ? <button disabled={props.followingProgress.some (id => id=== u.id)} onClick={() => {
+                                props.togglefollowingProgress(true,u.id);
                               userApi.unfollowUsers(u.id).then(data => {
                                         if (data.resultCode === 0) {
                                             props.unfollow(u.id);
                                         }
+                                        props.togglefollowingProgress(false,u.id);
                                     });
                             }}>Unfollow</button>
 
-                            : <button onClick={() => {
+                            : <button disabled={props.followingProgress.some(id => id=== u.id)} onClick={() => {
+                                props.togglefollowingProgress(true);
                                 userApi.followUsers(u.id).then(data => {
                                         if (data.resultCode === 0) {
                                             props.follow(u.id);
                                         }
+                                        props.togglefollowingProgress(false,u.id);
                                     });
                             }}>
                                 Follow</button>}
