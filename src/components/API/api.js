@@ -29,5 +29,8 @@ return instance
     .then(response =>{
         return response.data;
     })
-      }
+      },
+      getProfile: (userId)=>{
+        return  instance.get(`profile/` + userId)
+          }
 };
