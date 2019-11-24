@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from '././DialogsItem/DialogsItem'
 import Message from '././Message/Message'
+import {Redirect} from 'react-router-dom'
 
 
 
@@ -21,7 +22,7 @@ let onMessChange=()=>{
     let text=newPostWord.current.value;
     props.onMessChange(text);
   }
-
+if(props.isAuth ===false) return(<Redirect to ={'/login'}/>);
     
     return (
         <div>
