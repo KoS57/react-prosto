@@ -59,7 +59,7 @@ const Users = props => {
               )}
             </div>
           </span>
-          <span>
+          <span> 
             <span>
               <div>{u.name}</div>
               <div>{u.status}</div>

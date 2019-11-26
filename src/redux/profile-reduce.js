@@ -58,9 +58,10 @@ export const updateNewPostTextActionCreator = (text) => {
 export const setUsersProfile=(profile)=>{
   return{type: SET_USERS_PROFILE, profile} 
 }
-export const getUserProfile=(userId)=>(dispatch) =>{
+export const getUserProfile=(userId)=>(dispatch)=>{
     userApi.getProfile(userId).then(response => {
            dispatch(setUsersProfile(response.data));
           });
-        }
+        } 
+      
   export default profileReducer;
