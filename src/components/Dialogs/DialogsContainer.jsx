@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import { addMessActionCreator, updateNewMessTextActionCreator } from '../../redux/dialogs-reduce'
 import Dialogs from './Dialogs'
 import { widthAuthRedirect } from '../hoc/AuthRedirect';
+import { compose } from 'redux'
 
 
 
@@ -25,10 +26,13 @@ const mapDispatchProps=(dispatch)=>{
     }
 }
 }
-let AuthRedirectComponent=widthAuthRedirect(Dialogs);
 
 
 
 
-const DialogsContainer = connect(mapStateToProps,mapDispatchProps)(AuthRedirectComponent);
-export default DialogsContainer;
+
+export default 
+compose(
+    connect(mapStateToProps,mapDispatchProps),
+    widthAuthRedirect)
+(Dialogs);
