@@ -9,14 +9,14 @@ const instance = axios.create({
 });
 
 export const userApi = {
-  getUsers (currentPage = 1, pageSize = 10) {
-    return axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`,{withCredentials: true})
+  getUsers(currentPage = 1, pageSize = 10) {
+    return instance.get(`users?page=${currentPage}&count=${pageSize}`, { withCredentials: true })
       .then(response => {
         return response.data;
       });
-  }, 
-  unfollowUsers (id)  {
-    return axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`,{
+  },
+  unfollowUsers(id) {
+    return instance.delete(`follow/${id}`, {
       withCredentials: true,
       headers: {
         "API-KEY": "1474af24-1eca-4f89-82d1-e9866a25514c"
@@ -25,22 +25,34 @@ export const userApi = {
       return response.data;
     });
   },
-  followUsers (id){
-    return axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`,{},{
+  followUsers(id) {
+    return instance.post(`follow/${id}`, {}, {
       withCredentials: true,
       headers: {
         "API-KEY": "1474af24-1eca-4f89-82d1-e9866a25514c"
       }
-      }).then(response => {
+    }).then(response => {
       return response.data;
     });
   },
-  getProfile (userId) {
-    return axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId,{withCredentials: true});
+  getProfile(userId) {
+    console.warn('Obsolete method.Please profileAPI object.')
+    return profileAPI.getProfile(userId)
   }
- 
+
 };
-export const  authAPI ={
-  me() {return axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,{withCredentials: true});}
-  
+export const authAPI = {
+  me() { return instance.get(`auth/me`, { withCredentials: true }); },
+};
+
+export const profileAPI = {
+  getProfile(userId) {
+    return instance.get(`profile/` + userId, { withCredentials: true });
+  },
+  getStatus(userId) {
+    return instance.get(`profile/status/` + userId);
+  },
+  updateStatus(status) {
+    return instance.put(`profile/status`, { status: status });
+  }
 }
