@@ -13,7 +13,7 @@ export const widthAuthRedirect=(Component)=>{
         render(){
             if(!this.props.isAuth) return <Redirect to='/login'/>
             return <Component {...this.props}/>
-        }
+        } 
     }
     let ConnectAuthRedirectComponent=connect (mapStateToPropsForRedirect)(AuthRedirect)
     return ConnectAuthRedirectComponent;
