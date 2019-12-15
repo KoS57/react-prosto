@@ -30,7 +30,7 @@ export const userApi = {
       withCredentials: true,
       headers: {
         "API-KEY": "1474af24-1eca-4f89-82d1-e9866a25514c"
-      }
+      } 
     }).then(response => {
       return response.data;
     });
@@ -43,6 +43,12 @@ export const userApi = {
 };
 export const authAPI = {
   me() { return instance.get(`auth/me`, { withCredentials: true }); },
+  login(email,password,rememberMe=false){
+    return instance.post(`auth/login`,{email,password,rememberMe})
+  },
+  logout(){
+    return instance.delete(`auth/login`)
+  }
 };
 
 export const profileAPI = {
