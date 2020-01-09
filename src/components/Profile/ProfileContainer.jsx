@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import {compose} from 'redux'
 
-
+ 
 class ProfileContainer extends React.Component {
 
   componentDidMount() { 
